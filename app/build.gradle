@@ -43,10 +43,10 @@ android {
     }
     flavorDimensions "env"
     productFlavors {
-        v_product {
+        product {
             manifestPlaceholders = [environment: "product"]
         }
-        v_test {
+        check {
             manifestPlaceholders = [environment: "test"]
         }
     }
