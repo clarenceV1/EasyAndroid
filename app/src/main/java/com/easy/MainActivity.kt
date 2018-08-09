@@ -13,9 +13,10 @@ import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.sdk25.coroutines.onSeekBarChangeListener
 
+
 class MainActivity : BaseActivity() {
     val edtNameId = 12
-    var a=1
+    var a = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +55,7 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-        find<EditText>(edtNameId).text = Editable.Factory.getInstance().newEditable("dev 分支")
-
-//        startActivity<MainActivity>("id" to 5, "name" to "ActivityName")
+        find<EditText>(edtNameId).text = Editable.Factory.getInstance().newEditable(applicationMetaData(packageManager, packageName, "env"))
 
         alert {
             customView {
@@ -67,7 +66,7 @@ class MainActivity : BaseActivity() {
                     val firstName = editText {
                         hint = "First name"
                     }
-                    positiveButton("Register") { toast("点击了")}
+                    positiveButton("Register") { toast("点击了") }
                 }
             }
         }.show()
