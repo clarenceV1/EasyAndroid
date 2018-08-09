@@ -26,7 +26,6 @@ android {
         targetSdkVersion 28
         versionCode verCode
         versionName APP_VERSION
-        resValue("string", 'app_version', APP_VERSION)
         multiDexEnabled true
         signingConfig signingConfigs.release
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -45,10 +44,10 @@ android {
     flavorDimensions "env"
     productFlavors {
         v_product {
-            manifestPlaceholders = [environment:"product"]
+            manifestPlaceholders = [environment: "product"]
         }
         v_test {
-            manifestPlaceholders = [environment:"test"]
+            manifestPlaceholders = [environment: "test"]
         }
     }
     dexOptions {
@@ -57,7 +56,7 @@ android {
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "moreone_v" + APP_VERSION + "_" + buildType.name + "_${releaseTime()}.apk"
+            outputFileName = "moreone_v" + APP_VERSION + "_" + productFlavors[0].name + "_" + buildType.name + "_${releaseTime()}.apk"
         }
     }
 }
