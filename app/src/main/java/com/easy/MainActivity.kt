@@ -54,7 +54,7 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-        find<EditText>(edtNameId).text = Editable.Factory.getInstance().newEditable("master 分支")
+        find<EditText>(edtNameId).text = Editable.Factory.getInstance().newEditable("dev 分支")
 
 //        startActivity<MainActivity>("id" to 5, "name" to "ActivityName")
 
