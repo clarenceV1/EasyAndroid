@@ -67,7 +67,7 @@ class MainActivity : BaseActivity() {
                     val firstName = editText {
                         hint = "First name"
                     }
-                    positiveButton("Register") { register(familyName.text, firstName.text) }
+                    positiveButton("Register") { toast("点击了")}
                 }
             }
         }.show()
