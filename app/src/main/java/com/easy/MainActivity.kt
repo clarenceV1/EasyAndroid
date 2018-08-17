@@ -3,10 +3,12 @@ package com.easy
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.easy.base.BaseActivity
+import com.easy.data.ExampleEntity
 import kotlinx.android.synthetic.main.main.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
@@ -22,12 +24,16 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
         tvContent.setText(R.string.app_name)
-        debug("ddddddd")
+        info ("info info info")
+        warn ("warn warn warn")
+        verbose ("verbose verbose verbose")
+        debug ("debug debug debug")
+        error ("error error error")
 //        kotlin.error("dd")
 //        kotlin.error(dip(34))
 //        showAlerts()
 //        showAlerts2()
-
+//        showAlerts3()
         verticalLayout {
             backgroundColor = Color.parseColor("#FFFFFF")
             padding = dip(10)
@@ -57,6 +63,12 @@ class MainActivity : BaseActivity() {
         }
         find<EditText>(edtNameId).text = Editable.Factory.getInstance().newEditable(applicationMetaData(packageManager, packageName, "env"))
 
+
+
+        testSql()
+    }
+
+    private fun showAlerts3() {
         alert {
             customView {
                 verticalLayout {
@@ -70,6 +82,17 @@ class MainActivity : BaseActivity() {
                 }
             }
         }.show()
+    }
+
+    private fun testSql() {
+
+        var entityBox = boxStore().boxFor(ExampleEntity::class.java)
+        var entity = ExampleEntity()
+        entity.name = "test"
+        entityBox.put(entity)
+
+        var entity2 = entityBox.query().build().findFirst()
+        Log.d("testSql", entity2.toString())
     }
 
     private fun showAlerts2() {
